@@ -1,10 +1,14 @@
 package com.mendelin.tmdb_koin.di
 
 import com.mendelin.tmdb_koin.data.api.RetrofitServiceProvider
+import com.mendelin.tmdb_koin.data.repository.local.FavoritesRepository
 import com.mendelin.tmdb_koin.data.repository.local.PreferencesRepository
 import com.mendelin.tmdb_koin.data.repository.remote.MoviesRepository
 import com.mendelin.tmdb_koin.data.repository.remote.PeopleRepository
 import com.mendelin.tmdb_koin.data.repository.remote.TvShowsRepository
+import com.mendelin.tmdb_koin.data.room.FavoritesDao
+import com.mendelin.tmdb_koin.data.room.FavoritesDatabase
+import com.mendelin.tmdb_koin.ui.favorites.FavoritesViewModel
 import com.mendelin.tmdb_koin.ui.home.HomeViewModel
 import com.mendelin.tmdb_koin.ui.movie_details.MoviesDetailsViewModel
 import com.mendelin.tmdb_koin.ui.movies_now_playing.MoviesNowPlayingViewModel
@@ -42,6 +46,10 @@ val moduleTmdb = module {
 
     viewModel { PersonViewModel(get()) }
 
+    viewModel { FavoritesViewModel(get()) }
+
+    single { FavoritesDatabase.getDatabase(get()).favoritesDao() }
+
     single { MoviesRepository(get()) }
 
     single { TvShowsRepository(get()) }
@@ -49,6 +57,8 @@ val moduleTmdb = module {
     single { PeopleRepository(get()) }
 
     single { PreferencesRepository(get()) }
+
+    single { FavoritesRepository(get()) }
 }
 
 val moduleNetwork = module {

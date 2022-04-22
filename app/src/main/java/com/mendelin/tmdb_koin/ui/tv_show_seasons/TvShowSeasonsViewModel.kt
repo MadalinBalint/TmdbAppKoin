@@ -3,7 +3,7 @@ package com.mendelin.tmdb_koin.ui.tv_show_seasons
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.mendelin.tmdb_koin.base.BaseViewModel
-import com.mendelin.tmdb_koin.base.RetrofitResponseHandler
+import com.mendelin.tmdb_koin.common.RetrofitResponseHandler
 import com.mendelin.tmdb_koin.data.model.entity.SeasonItem
 import com.mendelin.tmdb_koin.data.model.response.CreditsResponse
 import com.mendelin.tmdb_koin.data.model.response.TvShowDetailsResponse
@@ -26,18 +26,6 @@ class TvShowSeasonsViewModel(private val repo: TvShowsRepository) : BaseViewMode
                 isLoading.value = false
             })
             .processData(tv_id, repo::getTvShowDetails)
-
-        /*val exceptionHandler = CoroutineExceptionHandler { _, ex ->
-            Timber.e("Exception ${ex.localizedMessage}")
-        }
-
-        val scope = CoroutineScope(Dispatchers.IO + exceptionHandler)
-
-        scope.launch {
-            val details = repo.getTvShowDetails(tv_id)
-            tvDetails.postValue(details)
-            tvSeasons.postValue(details.seasons)
-        }*/
     }
 
     fun fetchTvShowCredits(tv_id: Int) {
@@ -51,17 +39,6 @@ class TvShowSeasonsViewModel(private val repo: TvShowsRepository) : BaseViewMode
                 isLoading.value = false
             })
             .processData(tv_id, repo::getTvShowCredits)
-
-        /* val exceptionHandler = CoroutineExceptionHandler { _, ex ->
-             Timber.e("Exception ${ex.localizedMessage}")
-         }
-
-         val scope = CoroutineScope(Dispatchers.IO + exceptionHandler)
-
-         scope.launch {
-             val credits = repo.getTvShowCredits(tv_id)
-             tvCredits.postValue(credits)
-         }*/
     }
 
     val details: LiveData<TvShowDetailsResponse>

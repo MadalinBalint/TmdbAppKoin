@@ -2,7 +2,7 @@ package com.mendelin.tmdb_koin.data.room
 
 import androidx.room.TypeConverter
 
-class Converters {
+class ConverterIntList {
     @TypeConverter
     fun fromList(list: List<Int>): String = list.joinToString(",")
 

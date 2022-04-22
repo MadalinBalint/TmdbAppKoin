@@ -9,11 +9,18 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.mendelin.tmdb_koin.ItemMovieListResultBinding
 import com.mendelin.tmdb_koin.R
-import com.mendelin.tmdb_koin.base.IDetails
+import com.mendelin.tmdb_koin.common.IDetails
 import com.mendelin.tmdb_koin.data.model.entity.MovieListResultItem
+import com.mendelin.tmdb_koin.ui.favorites.FavoritesViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import org.koin.java.KoinJavaComponent.inject
 
 class MoviesUpcomingAdapter : PagingDataAdapter<MovieListResultItem, MoviesUpcomingAdapter.UpcomingMoviesViewHolder>(UpcomingMoviesDiffCallBack()) {
     class UpcomingMoviesViewHolder(var binding: ItemMovieListResultBinding) : RecyclerView.ViewHolder(binding.root) {
+        private val viewmodel by inject<FavoritesViewModel>(FavoritesViewModel::class.java)
+
         fun bind(movie: MovieListResultItem) {
             binding.property = movie
 
@@ -21,7 +28,15 @@ class MoviesUpcomingAdapter : PagingDataAdapter<MovieListResultItem, MoviesUpcom
                 val args = Bundle()
                 args.putInt("movieId", movie.id)
 
-                binding.homeCard.findNavController().navigate(R.id.movieDetailsFragment, args)
+                binding.movieCard.findNavController().navigate(R.id.movieDetailsFragment, args)
+
+                binding.btnFavoriteMovie.isChecked = viewmodel.isFavoriteMovie(movie.id)
+
+                binding.btnFavoriteMovie.setOnClickListener {
+                    CoroutineScope(Dispatchers.IO).launch {
+                        viewmodel.insertFavoriteMovie(movie)
+                    }
+                }
             }
 
             binding.executePendingBindings()
@@ -36,7 +51,6 @@ class MoviesUpcomingAdapter : PagingDataAdapter<MovieListResultItem, MoviesUpcom
         override fun areContentsTheSame(oldItem: MovieListResultItem, newItem: MovieListResultItem): Boolean {
             return oldItem == newItem
         }
-
     }
 
     override fun onBindViewHolder(holder: UpcomingMoviesViewHolder, position: Int) {

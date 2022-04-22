@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.mendelin.tmdb_koin.ItemEpisodeBinding
-import com.mendelin.tmdb_koin.base.IDetails
+import com.mendelin.tmdb_koin.common.IDetails
 import com.mendelin.tmdb_koin.data.model.entity.EpisodeItem
 
 class SeasonEpisodesAdapter : ListAdapter<EpisodeItem, SeasonEpisodesAdapter.SeasonEpisodeViewHolder>(SeasonEpisodeDiffCallBack()) {

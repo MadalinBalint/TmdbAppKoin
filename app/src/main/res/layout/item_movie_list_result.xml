@@ -9,17 +9,19 @@
 
         <import type="android.view.View" />
 
+        <import type="com.mendelin.tmdb_koin.common.Utils" />
+
         <variable
             name="property"
             type="com.mendelin.tmdb_koin.data.model.entity.MovieListResultItem" />
 
         <variable
             name="callback"
-            type="com.mendelin.tmdb_koin.base.IDetails" />
+            type="com.mendelin.tmdb_koin.common.IDetails" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/homeCard"
+        android:id="@+id/movieCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:animateLayoutChanges="true"
@@ -48,7 +50,7 @@
                 android:layout_marginBottom="16dp"
                 android:fontFamily="@font/baloothambi2_medium"
                 android:includeFontPadding="false"
-                android:text="@{@string/top_rated_title(property.title, property.getYear())}"
+                android:text="@{@string/top_rated_title(property.title, Utils.INSTANCE.getYear(property.release_date))}"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -69,11 +71,15 @@
                     app:imageUrl="@{property.poster_path}"
                     tools:src="@tools:sample/backgrounds/scenic" />
 
-                <ImageButton
-                    android:layout_gravity="top|end"
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/btnFavoriteMovie"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_favorites_off"/>
+                    android:layout_gravity="top|end"
+                    android:layout_margin="8dp"
+                    android:button="@drawable/favorite_states"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp" />
 
             </FrameLayout>
 

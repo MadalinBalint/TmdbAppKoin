@@ -1,4 +1,4 @@
-package com.mendelin.tmdb_koin.base
+package com.mendelin.tmdb_koin.common
 
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope

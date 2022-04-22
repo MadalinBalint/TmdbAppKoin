@@ -51,24 +51,16 @@ class PersonFragment : Fragment() {
         Timber.d("Person ID = ${args.personId}")
 
         viewModel.fetchMovieCredits(args.personId)
-        //viewModel.fetchTvCredits(args.personId)
+        viewModel.fetchTvCredits(args.personId)
         viewModel.fetchPersonDetails(args.personId)
 
         viewModel.movieCredits.observe(viewLifecycleOwner) {
-            //Timber.d(it.toString())
             creditsAdapter.setList(it.cast.sortedByDescending { credit -> credit.release_date })
         }
 
-        /*viewModel.details.observe(viewLifecycleOwner) {
-            Timber.d("Person details:")
-            Timber.d(it.toString())
-        }*/
+        viewModel.tvCredits.observe(viewLifecycleOwner) {
 
-        /*viewModel.tvCredits.observe(viewLifecycleOwner) {
-            //Timber.d(it.toString())
-
-            //creditsAdapter.setList(it.cast)
-        }*/
+        }
     }
 
     override fun onDestroyView() {

@@ -3,7 +3,7 @@ package com.mendelin.tmdb_koin.ui.person
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.mendelin.tmdb_koin.base.BaseViewModel
-import com.mendelin.tmdb_koin.base.RetrofitResponseHandler
+import com.mendelin.tmdb_koin.common.RetrofitResponseHandler
 import com.mendelin.tmdb_koin.data.model.response.PersonDetailsResponse
 import com.mendelin.tmdb_koin.data.model.response.PersonMovieCreditsResponse
 import com.mendelin.tmdb_koin.data.model.response.PersonTvCreditsResponse

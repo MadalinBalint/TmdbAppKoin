@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.mendelin.tmdb_koin.ItemSeasonBinding
 import com.mendelin.tmdb_koin.R
-import com.mendelin.tmdb_koin.base.IDetails
+import com.mendelin.tmdb_koin.common.IDetails
 import com.mendelin.tmdb_koin.data.model.entity.SeasonItem
 
 class SeasonsAdapter(val tv_name: String, val tv_id: Int) : ListAdapter<SeasonItem, SeasonsAdapter.SeasonViewHolder>(SeasonDiffCallBack()) {

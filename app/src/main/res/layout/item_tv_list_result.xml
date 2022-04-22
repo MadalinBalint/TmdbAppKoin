@@ -9,13 +9,15 @@
 
         <import type="android.view.View" />
 
+        <import type="com.mendelin.tmdb_koin.common.Utils" />
+
         <variable
             name="property"
             type="com.mendelin.tmdb_koin.data.model.entity.TvListResultItem" />
 
         <variable
             name="callback"
-            type="com.mendelin.tmdb_koin.base.IDetails" />
+            type="com.mendelin.tmdb_koin.common.IDetails" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -48,22 +50,38 @@
                 android:layout_marginBottom="16dp"
                 android:fontFamily="@font/baloothambi2_medium"
                 android:includeFontPadding="false"
-                android:text="@{@string/top_rated_title(property.name, property.getYear())}"
+                android:text="@{@string/top_rated_title(property.name, Utils.INSTANCE.getYear(property.first_air_date))}"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="normal"
                 tools:text="The Green Mile" />
 
-            <!-- Movie poster -->
-            <ImageView
-                android:id="@+id/imgPoster"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="256dp"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
-                android:visibility="@{TextUtils.isEmpty(property.poster_path) ? View.INVISIBLE : View.VISIBLE}"
-                app:imageUrl="@{property.poster_path}"
-                tools:src="@tools:sample/avatars" />
+                android:layout_height="256dp">
+
+                <!-- TV Show poster -->
+                <ImageView
+                    android:id="@+id/imgPoster"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:visibility="@{TextUtils.isEmpty(property.poster_path) ? View.INVISIBLE : View.VISIBLE}"
+                    app:imageUrl="@{property.poster_path}"
+                    tools:src="@tools:sample/avatars" />
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/btnFavoriteTvShow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|end"
+                    android:layout_margin="8dp"
+                    android:button="@drawable/favorite_states"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp" />
+
+            </FrameLayout>
 
             <!-- TV Show overview -->
             <TextView

@@ -24,7 +24,6 @@ class PreferencesRepository(val context: Context) {
     fun <T> getPostion(key: Preferences.Key<T>, defaultValue: T): Flow<T> {
         return context.preferencesDataSource.data
             .map { preferences ->
-                // Get our show completed value, defaulting to false if not set:
                 preferences[key] ?: defaultValue
             }
     }

@@ -15,7 +15,7 @@
 
         <variable
             name="callback"
-            type="com.mendelin.tmdb_koin.base.IDetails" />
+            type="com.mendelin.tmdb_koin.common.IDetails" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

@@ -55,14 +55,6 @@ class MovieDetailsFragment : Fragment() {
         viewModel.fetchMovieCredits(args.movieId)
         viewModel.fetchMovieDetails(args.movieId)
 
-        /*viewModel.details.observe(viewLifecycleOwner) {
-            //Timber.d(it.toString())
-        }
-
-        viewModel.credits.observe(viewLifecycleOwner) {
-            //Timber.d(it.toString())
-        }*/
-
         viewModel.casting.observe(viewLifecycleOwner) {
             Timber.d(it.toString())
 

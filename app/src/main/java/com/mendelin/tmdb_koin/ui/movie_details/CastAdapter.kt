@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.mendelin.tmdb_koin.ItemCastBinding
 import com.mendelin.tmdb_koin.R
-import com.mendelin.tmdb_koin.base.IDetails
+import com.mendelin.tmdb_koin.common.IDetails
 import com.mendelin.tmdb_koin.data.model.entity.CastItem
 
 class CastAdapter(val isMovieCast: Boolean = true) : ListAdapter<CastItem, CastAdapter.CastViewHolder>(CastDiffCallBack()) {
