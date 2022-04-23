@@ -9,7 +9,7 @@ Single activity Android app that shows informations about movies and TV shows us
 - menu with **Favorites** for movies and TV shows
 - detail pages for movies, TV shows (seasons and episodes list for every season), actors
 
-## Android features used
+## Android & 3rd party features used
 - Kotlin programming language
 - material components & themes
 - light & dark themes
@@ -19,6 +19,7 @@ Single activity Android app that shows informations about movies and TV shows us
 - horizontal and vertical RecyclerView (single and multiple types of ViewHolder) with ListAdapter & DiffUtil
 - ViewPager v2 with TabLayout for fragments 
 - endless scrolling with PagingDataAdapter and PagingSource, using Paging v3
+- swipe to refresh  
 - coroutines and Flow
 - bottom navigation and toolbar menu
 - data binding, view binding, binding adapters for loading images
@@ -27,3 +28,6 @@ Single activity Android app that shows informations about movies and TV shows us
 - favorites stored using [Room](https://developer.android.com/training/data-storage/room)
 - current item in every page stored using [DataStore](https://developer.android.com/topic/libraries/architecture/datastore)
 - dependency injection with [Koin](https://insert-koin.io/docs/setup/v3.2/)
+
+- retry mechanism in case of *5xx* server errors
+- custom class for handling of network response (*RetrofitResponseHandler*)
