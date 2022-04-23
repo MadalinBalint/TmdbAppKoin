@@ -28,6 +28,5 @@ Single activity Android app that shows informations about movies and TV shows us
 - favorites stored using [Room](https://developer.android.com/training/data-storage/room)
 - current item in every page stored using [DataStore](https://developer.android.com/topic/libraries/architecture/datastore)
 - dependency injection with [Koin](https://insert-koin.io/docs/setup/v3.2/)
-
 - retry mechanism in case of *5xx* server errors
 - custom class for handling of network response (*RetrofitResponseHandler*)
